@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shortened URLs</title>
+</head>
+<body>
+<% @links.each do |link| %>
+<%= link.name %>: <%= link.id %>
+<br>
+<% end %>
+</body>
+</html>

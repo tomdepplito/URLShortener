@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shorten URL Page</title>
+</head>
+<body>
+	<%= form_for @link do |f| %>
+	  <%= f.label :name %>
+	  <%= f.text_field :name %>
+	  <%= f.submit "Create" %>
+	<% end %>
+</body>
+</html>
