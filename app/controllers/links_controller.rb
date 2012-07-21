@@ -10,6 +10,11 @@ class LinksController < ApplicationController
   def show
     @link = Link.find(params[:id])
   end
+  
+  def match
+    a = Link.find(params[:slug])
+    redirect_to(a.name)
+  end
 
   def create
    @link = Link.new(:name => params[:link][:name])

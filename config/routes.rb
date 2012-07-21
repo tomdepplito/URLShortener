@@ -1,7 +1,7 @@
 FriendlyURL::Application.routes.draw do
 
-  match '/:slug/' => '/'
   resources :links
+  match '/:slug' => 'links#match'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
