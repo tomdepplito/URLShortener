@@ -4,7 +4,7 @@ class LinksController < ApplicationController
   end
   
   def shorten
-    @link.id.to_s
+    @short_name = (0...5).map{ (0..9).to_a[rand(10)].to_s+('a'..'z').to_a[rand(26)] }.join
   end
   
   def show
@@ -12,12 +12,16 @@ class LinksController < ApplicationController
   end
   
   def match
-    a = Link.find(params[:slug])
+    a = Link.find_by_short_name(params[:slug])
     redirect_to(a.name)
+  end
+  
+  def clean(url)
+    "http://" + url.gsub(/http:\/\/|https:\/\/|www./, "")
   end
 
   def create
-   @link = Link.new(:name => params[:link][:name])
+   @link = Link.new(:name => clean(params[:link][:name]))
    @link.short_name = shorten
    if @link.save
      redirect_to(link_path(@link))
